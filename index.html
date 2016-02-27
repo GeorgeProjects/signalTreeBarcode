@@ -1,0 +1,155 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+        <title>Signal tree visualization</title>
+        <link rel="stylesheet" type="text/css" href="libs/bootstrap/css/bootstrap.css">
+        <link rel="stylesheet" type="text/css" href="libs/d3.parsets/d3.parsets.css">
+        <link rel="stylesheet" type="text/css" href="css/sigtree.css">
+    	<link rel="stylesheet" type="text/css" href="css/select_tree.css">
+        <link rel="stylesheet" type="text/css" href="css/tree_compare.css">
+    	<link rel="stylesheet" type="text/css" href="css/radial.css">  
+        <link rel="stylesheet" type="text/css" href="css/parset.css">  
+        <link rel="stylesheet" type="text/css" href="libs/jquery-ui.css">
+    </head>
+
+    <body>
+        <div class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <strong class="navbar-brand" style="height:30px">BarcodedTree Visuaization</strong>
+                <div class="navbar-collapse collapse">
+                    <span class="nav navbar-nav navbar-right">
+                        <li><a><strong>Peking University</strong></a></li>
+                    </span>
+                </div>             
+            </div>
+        </div>
+        <div id="topWrapper">
+            <div id="innerTopLeft">
+                <div id="tree-select-controller">
+                    <span class="btn-group" role="group">
+                        <span class="datadim-btn btn btn-default btn-xs active" datadim-type="flowsize">
+                           <span class="glyphicon glyphicon-sort"></span>
+                        </span>
+                        <span class="datadim-btn btn btn-default btn-xs" datadim-type="nodenum">
+                           <span class="glyphicon glyphicon-th"></span>
+                        </span>
+                    </span>
+                    <span class="btn-group" role="group">
+                        <span class="sort-btn btn btn-default btn-xs active" sort-type="time">
+                           <span class="glyphicon glyphicon-time"></span>
+                        </span>
+                        <span class="sort-btn btn btn-default btn-xs" sort-type="size">  
+                            <span class="glyphicon glyphicon-signal"></span>
+                        </span>
+                    </span>
+                     <span class="btn btn-default btn-xs" id="help">  
+                        <span class="glyphicon glyphicon-exclamation-sign"></span>
+                    </span>
+                </div>
+            </div>
+            <div id="innerTopRight">
+                <div id="scroll">
+                    <div class="row">
+                        <div id="srocllDiv" class="col-md-12 text-center">
+                            <div id="label-A" class="label-wrapper">
+                                <span class="btn btn-default btn-xs label">A</span>
+                                <br/>
+                                
+                                <span class="date_text"><strong>Date: </strong></span>
+                                <span class="date_description"></span><br/>
+                                <span class="value_text"><strong>Values: </strong></span>
+                                <span class="value_description"></span><br/>
+                                <span class="value_level"><strong>Level: </strong></span>
+                                <span class="level_description"></span><br/>
+                                <span class="value_node_num"><strong>Node Num:</strong></span>
+                                <span class="node_num_description"></span><br/>
+                                
+                                <span class="value_L0node_num"><strong>L0 Node Num:</strong></span>
+                                <span class="L0node_num_description"></span><br/>
+                                <span class="value_L1node_num"><strong>L1 Node Num:</strong></span>
+                                <span class="L1node_num_description"></span><br/>
+                                <span class="value_L2node_num"><strong>L2 Node Num:</strong></span>
+                                <span class="L2node_num_description"></span><br/>
+                                <span class="value_L3node_num"><strong>L3 Node Num:</strong></span>
+                                <span class="L3node_num_description"></span><br/>
+                                <span class="value_L4node_num"><strong>L4 Node Num:</strong></span>
+                                <span class="L4node_num_description"></span>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+               <!-- <div id="label-C" class="label-wrapper" style="text-align: center; width:100%">
+                    <span class="btn btn-default btn-xs label" id="node-type" class="backgrond-A">A</span>
+                    <span id="node-id"><strong>Node: </strong></span>
+                    <span id="node-description"></span>
+                    <span id="level-text"><strong>Level: </strong></span>
+                    <span id="level-description"></span><br/>
+                    <span id="flow-level"><strong>Flow: </strong></span>
+                    <span id="flow-description"></span>
+                    <span id="tree_node_num"><strong>Tree:</strong></span>
+                    <span id="tree-num-description"></span>
+                    <span id="sum-node-num"><strong>sub-node Num:</strong></span>
+                    <span id="sum-num-description"></span>
+                </div>-->
+            </div>
+        </div>
+
+        <div id="leftTopWrapper" class="row">
+            <div id="radial-depth-controller" class="col-md-6">
+                <div id='depth-control'>
+                     <div id="label-A">
+                        <span class="btn btn-default btn-xs" id="state-change">  
+                            <span class="glyphicon glyphicon-transfer"></span>
+                        </span>
+                     </div><br/>
+                     <div class="btn btn-default btn-xs active level-btn" level=0>L0</div><br/>
+                     <div class="btn btn-default btn-xs active level-btn" level=1>L1</div><br/>
+                     <div class="btn btn-default btn-xs active level-btn" level=2>L2</div><br/>
+                     <div class="btn btn-default btn-xs active level-btn" level=3>L3</div><br/>
+                     <div class="btn btn-default btn-xs active level-btn" level=4>L4</div><br/>
+                 </div>
+                 <div id='slider-control'>
+                    <div id='bottom-value'>
+                        <center id='now-value'></center>
+                    </div>
+                    <div id='slider-view'></div>
+                    <div id='top-value'>
+                        <center id='max-value'>30</center>
+                    </div>
+                 </div>
+            </div>
+            <div id="radial-draw-svg" class="col-md-6">
+            </div>
+        </div>
+    </body>
+    <!-- Libraries -->
+
+    <script type="text/javascript" src="libs/jquery.js"></script>
+    <script type="text/javascript" src="libs/d3.js"></script>
+    <script type="text/javascript" src="libs/d3.tip.js"></script>
+    <script type="text/javascript" src="libs/queue.js"></script>
+    <script type="text/javascript" src="libs/Underscore.js"></script>
+    <script type="text/javascript" src="libs/jquery-ui.js"></script>
+
+    <!-- utils js -->
+    <script type="text/javascript" src="js/sigtree.js"> </script>
+    <script type="text/javascript" src="js/ObserverManager.js"> </script>
+    <script type="text/javascript" src="js/utils.js"> </script>
+    <script type="text/javascript" src="js/data_processor.js"> </script>
+    <script type="text/javascript" src="js/combinator.js"> </script>
+    <script type="text/javascript" src="libs/d3.parsets/d3.parsets.js"></script>    
+
+	<script type="text/javascript" src="js/radial.js"></script> 
+	<script type="text/javascript" src="js/tree_select.js"></script>
+
+    <script type="text/javascript" src="js/main.js"></script>
+    <script type="text/javascript" src="js/merge_preprocess_rawdata.js"></script>
+    
+</html>
+
+
+

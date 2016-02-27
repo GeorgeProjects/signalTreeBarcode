@@ -1,0 +1,114 @@
+.text{
+  font-size: 12px;
+}
+.time{
+  font-size: 12px;
+}
+.size{
+  font-size: 12px;
+}
+.tick_label{
+  font-size: 12px;
+}
+#innerTopLeft {
+  text-align: center;
+  float: left;
+  width: 90%;
+  height: 100%;
+}
+#innerTopRight {
+  padding: 5px 5px 5px 10px;
+  text-align: center;
+  /*vertical-align: center;*/
+  float: right;
+  width: 10%;
+  height: 100%;
+  border:2px solid #a0a0a0;
+  padding:5px 5px 5px 5px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  line-height:1.2;/*右上角窗口中字体的行间距*/
+}
+/*
+#mainTimeline .bar {
+  fill: #C0C0C0;
+}
+*/
+/*按照radial.css中slider-hover-...的颜色*/
+#mainTimeline .level-9.selected_seperate_bar {
+  fill: #b3e2cd;
+}
+#mainTimeline .level-7.selected_seperate_bar {
+  fill: #fdcdac;
+}
+#mainTimeline .level-5.selected_seperate_bar {
+  fill: #cbd5e8;
+}
+#mainTimeline .level-3.selected_seperate_bar {
+  fill: #f4cae4;
+}
+#mainTimeline .level-1.selected_seperate_bar {
+  fill: #e6f5c9;
+}
+/*
+#mainTimeline .selected_seperate_bar {
+  fill: #FF0000;
+}
+*/
+
+#mainTimeline .current {
+  fill: #1F77B4;
+  stroke: #b2df8a;
+  stroke-width: 2px;
+}
+
+#mainTimeline .selected {
+  fill: #1F77B4;
+  stroke: #b2df8a;
+  stroke-width: 2px;
+}
+
+.label-wrapper > .label  {
+  pointer-events: none;
+  cursor: not-allowed;  
+  color: white;
+}
+
+#tree-select-controller {
+  text-align: right;
+}
+
+
+#label-C {
+  margin-top: 0.3em;
+  padding-top: 0.3em;
+  border-top: 2px solid #ddd;
+}
+
+rect[class~=level-1]{
+  fill:#C0C0C0;
+}
+rect[class~=level-2]{
+  fill:white;
+}
+rect[class~=level-3]{
+  fill:#C0C0C0;
+}
+rect[class~=level-4]{
+  fill:white;
+}
+rect[class~=level-5]{
+  fill:#C0C0C0;
+}
+rect[class~=level-6]{
+  fill:white;
+}
+rect[class~=level-7]{
+  fill:#C0C0C0;
+}
+rect[class~=level-8]{
+  fill:white;
+}
+rect[class~=level-9]{
+  fill:#C0C0C0;
+}
