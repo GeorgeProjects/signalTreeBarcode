@@ -43,9 +43,11 @@ var mainController = function(){
                 .done(function() {
                     //var listeners = _.without(ObserverManager.getListeners(), radialView, treeCompareView, parsetView); //remove old views in listeners
                     //ObserverManager.setListeners(listeners);
-                    for(var i = 0; i < dataCenter.datasets.length; i++){
-                        radial(i);
-                    }
+                    console.log(dataCenter.datasets);
+                    radial(dataCenter.datasets);
+                    //for(var i = 0; i < dataCenter.datasets.length; i++){
+                        //radial(i);
+                    //}
                 });
         }else if(message == "removeData"){
             var id = data;
@@ -63,8 +65,8 @@ var mainController = function(){
                     break;
                 }
             }
+            radial(dataCenter.datasets);
         }
-        console.log(dataCenter);
     }
     initInteractionHandler();
     $.when(loadStatData())

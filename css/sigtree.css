@@ -45,7 +45,7 @@
   top:35px;
   /*top: 50px;*/
   width:100%;
-  bottom: 70%;
+  bottom: 75%;
   border:1px solid #a0a0a0;
 }
 
@@ -57,7 +57,7 @@
 #leftTopWrapper {
   border:1px solid #a0a0a0;
   position: absolute;
-  top: 30%;
+  top: 25%;
   left:0%;
   right:1%;
   bottom: 0%;
